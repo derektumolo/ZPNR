@@ -50,6 +50,22 @@ class Skill (models.Model):
 	def __unicode__(self):
 		return self.skillName	
 
+class PlayerManager(models.Manager):
+    def create_player(self, fsid, fstoken):
+        """
+        Creates and saves a Player with the given fs info
+        """
+
+        now = datetime.datetime.now()
+
+        # Normalize the address by lowercasing the domain part of the email
+        # address.
+
+        player = self.model(foursquareId=fsid, foursquareToken=fstoken)
+
+        player.save(using=self._db)
+        return player
+
 class Player (models.Model):
 	playerName = models.CharField(max_length = 200)
 	playerPassword = models.CharField(max_length = 200)

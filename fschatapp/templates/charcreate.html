@@ -1,0 +1,14 @@
+<h1>ZombiePirateNinjaRobot</h1>
+
+Pick your awesome form!
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="/charcreate/" method="post">
+{% csrf_token %}
+{% for class in class_list.all %}
+    <input type="radio" name="class" id="class{{ forloop.counter }}" value="{{ class.id }}" />
+    <label for="class{{ forloop.counter }}">{{ class.className }}</label><br />
+{% endfor %}
+<input type="submit" value="Select" />
+</form>

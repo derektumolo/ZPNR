@@ -11,10 +11,17 @@ def index(request):
     return HttpResponse("Hello, world.")
 
 def guest(request):
-	return HttpResponse("Welcome to ZombiePirateNinjaRobot.com</br> (about the game) (registration form)<a href='/auth'>Go</a>")
+	players_list = Player.objects.all()
+	
+	return render_to_response('index.html', {'players_list': players_list})	
+
+def charcreate(request):
+	class_list = uClass.objects.all()
+
+	return render_to_response('charcreate.html', {'class_list': class_list})
 
 def auth(request):
-	return HttpResponse("Click the link to authorize your foursquare account.  If you don't have one yet, this will help you create one. <a href='https://foursquare.com/oauth2/access_token'>Connect to Foursquare</a>")
+	return HttpResponse("Click the link to authorize your foursquare account.  If you don't have one yet, this will help you create one. <a href='{% url foursquare_oauth_auth %}'>Login with foursquare</a>")
 
 # for reference only
 def detail(request, player_id):

@@ -26,7 +26,10 @@ urlpatterns = patterns('',
     (r'^/$', 'fschatapp.views.guest'),
 
 #foursquare auth. first thing after reg.
-    (r'^auth$', 'fschatapp.views.auth'),
+#    (r'^auth$', 'fschatapp.views.auth'),
+
+#django foursquare
+    (r'^auth/', include('djangofoursquare.urls')),
 
 #foursquare auth results and class selection.
 #here is also where we request location data, and explain what we use it for.
