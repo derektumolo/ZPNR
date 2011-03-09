@@ -60,6 +60,9 @@ ADMIN_MEDIA_PREFIX = '/media/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'nmu=dvr_#c+m&16@s+-1mdb96v@j8e*d@db_y6!zd@t9_^b=ks'
 
+FOURSQUARE_CONSUMER_KEY = 'TECBSMSK3L2CYUEA4T15RCK05UF1YXP22YDJJ2BAF1SW1BFY'
+FOURSQUARE_CONSUMER_SECRET = 'ISMKYKLT4QFJJVDOBJLUSBZ1HDITKV2BJPDHVGVBGUTAQLYT'
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -95,4 +98,9 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'fschatapp',
+    'djangofoursquare',
+)
+
+AUTHENTICATION_BACKENDS = (
+	'djangofoursquare.backends.FoursquareBackend',
 )
