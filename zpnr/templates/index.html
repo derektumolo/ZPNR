@@ -1,0 +1,23 @@
+<h1>ZombiePirateNinjaRobot</h1>
+
+image goes here <br>
+
+<div id='about'>
+<p>This is a game about challenging other zombies, pirates, robots, and ninjas to fights, at your favorite places.  It uses Foursquare to find nearby enemies, so click the link to link up and get started. </p>
+	<a href='/auth'>Connect to Foursquare</a>
+<p>When you're done with that, you can pick which creature you are.</p>
+</div>
+
+<div id='recentplayers'>
+<p>These players recently joined:</p>
+{% if players_list %}
+    <ul>
+    {% for player in players_list %}
+        <li><a href="/player/{{ player.id }}/">{{ player.playerName }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No players are available.</p>
+{% endif %}
+</div>
+

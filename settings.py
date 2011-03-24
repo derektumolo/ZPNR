@@ -60,8 +60,8 @@ ADMIN_MEDIA_PREFIX = '/media/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'nmu=dvr_#c+m&16@s+-1mdb96v@j8e*d@db_y6!zd@t9_^b=ks'
 
-FOURSQUARE_CONSUMER_KEY = 'TECBSMSK3L2CYUEA4T15RCK05UF1YXP22YDJJ2BAF1SW1BFY'
-FOURSQUARE_CONSUMER_SECRET = 'ISMKYKLT4QFJJVDOBJLUSBZ1HDITKV2BJPDHVGVBGUTAQLYT'
+FOURSQUARE_CONSUMER_KEY = '2YCFBN4VMT0KWPJCDJQZRWPB2KUVKUGYPU0WDYTFRR1XJ5Y5'
+FOURSQUARE_CONSUMER_SECRET = 'OBTNLSITZYIH4A4UFK2QULX51HFE5S1EFO5VDU3EI5WATWET'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -78,13 +78,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'fschat.urls'
+ROOT_URLCONF = 'fsgames.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/ec2-user/fschat/fschatapp/templates',
+    '/home/ec2-user/fsgames/zpnr/templates',
 )
 
 INSTALLED_APPS = (
@@ -97,10 +97,15 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'fschatapp',
+    'zpnr',
     'djangofoursquare',
 )
 
 AUTHENTICATION_BACKENDS = (
 	'djangofoursquare.backends.FoursquareBackend',
+	'django.contrib.auth.backends.ModelBackend'
+)
+
+FIXTURE_DIRS = (
+	'/home/ec2-user/fsgames/zpnr/fixtures',
 )
