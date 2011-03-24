@@ -26,7 +26,7 @@ def charcreate(request):
 			context_instance=RequestContext(request))
 
 	elif request.method == "POST":
-		class_list = uClass.objects.all()
+		class_list = UserClass.objects.all()
 		try:
 			cclass = class_list.get(pk=request.POST['class'])
 		except (KeyError, cclass.DoesNotExist):
@@ -37,7 +37,7 @@ def charcreate(request):
 		else:
 			if request.user.is_authenticated():
 				player = Player.objects.get(user=request.user.id)
-				player.uClass = class_list.get(pk=request.POST['class'])
+				player.user_class = class_list.get(pk=request.POST['class'])
 				player.save()
 	
 			#go to the checkin page
@@ -46,12 +46,14 @@ def charcreate(request):
 def checkin(request):
 	player = Player.objects.get(user=request.user.id)
 	
-	return render_to_response('checkin.html',{'player_class': player.uClass})
+	return render_to_response('checkin.html',{'player_class': player.user_class})
 
 def auth(request):
-	return HttpResponse("Click the link to authorize your foursquare account.  
+	return HttpResponse("""
+		Click the link to authorize your foursquare account.  
 		If you don't have one yet, this will help you create one. <a href=
-		'{% url foursquare_oauth_auth %}'>Login with foursquare</a>")
+		'{% url foursquare_oauth_auth %}'>Login with foursquare</a>
+		""")
 
 # for reference only
 def detail(request, player_id):
